@@ -136,6 +136,9 @@ def create_policy(username) -> bool:
 
     print(f'Policy attached to user {username}')
   except Exception as e:
+    iam_client.delete_policy(
+      PolicyArn=policy_arn
+    )
     print(f'Error attaching policy: {e}')
     return False
 
